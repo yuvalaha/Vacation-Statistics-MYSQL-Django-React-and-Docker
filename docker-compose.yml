@@ -1,0 +1,139 @@
+# docker-compose versio:
+version: '3.8'
+
+# All containers needed(4 containers): 
+services: 
+
+  # MySQL Service:
+  database-service:
+
+    # Image name to create from Dockerfile:
+    image: yuvalaha/beautiful-vacation-database-image:1.0
+
+    # Where is the location of the Dockerfile:
+    build: ./Database
+
+    # Contaimer name to create:
+    container_name: beautiful-vacation-database-container
+
+    # Named volume for MySQL folder:
+    volumes:
+      - beautiful-vacation-volume:/var/lib/mysql
+    
+    # Environment variables needed by MySQL for creating the database
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_USER: Samoyed
+      MYSQL_PASSWORD: BritishShorthair
+      MYSQL_DATABASE: beautiful_vacation
+      MYSQL_ROOT_PASSWORD: BritishShorthair
+      MySQL_PORT: 3307
+
+
+    # What to do if restart:
+    restart: unless-stopped
+
+    # Health check- Check if database up and running:
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      interval: 5s
+      retries: 24
+
+# ----------------------------------------------------------------------------------------------------------------
+  # Flask Service:
+  flask-service:
+
+    # On which service we're depending on - for runinng and shutting down order:
+    depends_on:
+      database-service:
+        condition: service_healthy
+
+    # Image name to create from dockerfile
+    image: yuvalaha/vacation-flask-image:1.0
+
+    # Where is the location of the Dockerfile:
+    build: ./Vacation Flask
+
+    # Container name to create:
+    container_name: vacation-flask-container
+
+    # Environment variables needed by our backend project for connecting to MySQL located in another container
+    environment:
+      MYSQL_HOST: database-service
+      MYSQL_USER: Samoyed
+      MYSQL_PASSWORD: BritishShorthair
+      MYSQL_DATABASE: beautiful_vacation
+    
+    # What to do if restart:
+    restart: unless-stopped
+
+    # Volume for persisting the vacations images: 
+    volumes: 
+      - images-volume:/app/src/static/images
+
+    # Port mapping (host:container)
+    ports:
+      - 5000:5000
+    
+# ----------------------------------------------------------------------------------------------------------------
+  # Django service:
+  django-service:
+
+    # On which service we're depending on - for runinng and shutting down order:
+    depends_on:
+      database-service:
+        condition: service_healthy
+
+    # Image name to create from dockerfile
+    image: yuvalaha/vacation-django-image:1.0
+
+    # Where is the location of the Dockerfile:
+    build: ./Vacation Django
+
+    # Container name to create:
+    container_name: vacation-django-container
+
+    # Environment variables needed by our backend project for connecting to MySQL located in another container
+    environment:
+      MYSQL_HOST: database-service
+      MYSQL_USER: Samoyed
+      MYSQL_PASSWORD: BritishShorthair
+      MYSQL_DATABASE: beautiful_vacation
+      MySQL_PORT: 3307
+    
+    # What to do if restart:
+    restart: unless-stopped
+
+    # Port mapping (host:container)
+    ports:
+      - 8000:8000 
+
+
+# ----------------------------------------------------------------------------------------------------------------
+  # React service:
+  react-service:
+
+    # On which service we're depending on - for running and shutting-down order:
+    depends_on:
+      - django-service
+    
+    # Image name to create from Dockerfile
+    image: yuvalaha/beautiful-vacation-react-image:1.0
+
+    # Where is the location of the dockerfile
+    build: ./Vacation Statistics React
+
+    # Container name to craete:
+    container_name: beautiful-vacation-react-container 
+
+    # What to do if restart 
+    restart: unless-stopped
+    
+    # Port mapping:
+    ports:
+      - 80:3000
+
+volumes:
+  images-volume:
+  beautiful-vacation-volume:

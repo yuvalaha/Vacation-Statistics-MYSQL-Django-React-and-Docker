@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Beautiful Vacations | Update Vacation
+{% endblock title %}
+
+{% block main %}
+
+<form method="post" class="update-form"  enctype="multipart/form-data">
+    <input type="hidden" name="vacation_id" value="{{vacation.vacation_id}}">
+    <label>Country:</label>
+    <select class="form-control center-select" id="selected_country_id" name="country_id">
+        {% for country in vacation_countries %}
+          {% if country.country_id == vacation.country_id %}
+            <option value="{{ country.country_id }}" selected>{{ country.country_name }}</option>
+          {% else %}
+            <option value="{{ country.country_id }}">{{ country.country_name }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    <br><br>
+    <label>Description: </label>
+    <textarea name="description" id="" cols="30" rows="10"  required>{{vacation.description}} </textarea>
+    <br><br>
+    <label>Start on: </label>
+    <input type="date" name="vacation_start_date" value="{{vacation.vacation_start_date}}" onchange="validateVacationsDates()" required>
+    <br><br>
+    <label>End on: </label>
+    <input type="date" name="vacation_end_date"  value="{{vacation.vacation_end_date}}"required onchange="validateVacationsDates()">
+    <label>Price: </label>
+    <div class="price"></div>
+        <div class="input-container">
+            <input type="number" name="price" value="{{vacation.price}}" required max="9999" min="0" required>
+        </div>
+    <br>
+    <div class="image-container">
+        <img src="{{url_for('vacations_view.get_image', image_name = (vacation.vacation_image  if vacation.vacation_image else '---'))}}" alt="">
+        <label for="vacation_image" class="upload-label">Change image</label>
+        <input type="file" class="form-control-file" id="vacation_image" name="vacation_image"  accept="image/*" >
+    </div>    
+    <br><br>
+    <button class="btn btn-primary w-80">Update Vacation</button>
+    <br><br>
+    <button class="btn btn-primary w-80">Cancel</button>
+</form>
+
+{% endblock main %}

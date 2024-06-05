@@ -1,0 +1,28 @@
+
+{% set user = session.get("user") %}
+
+<nav class="navbar bg-body-tertiary" data-bs-theme="dark" style="background-color: green;">
+    <div class="container-fluid">
+      <a class="navbar-brand" >
+        <img src="{{url_for('static', filename = 'icons/bv.svg')}}" alt="Logo" width="10" height="10" class="d-inline-block align-text-top">
+        <p>Beautiful Vacations</p>
+      </a>
+      {% if user  %}
+      <span class="user-auth">
+        Hello {{user.first_name}} {{user.last_name}},
+        <a href="{{url_for('auth_view.logout')}}">Logout</a>
+      </span>
+      
+      
+      {% else %}
+      <div>
+        <span class="user-auth">
+            Hello Guest,  
+            <a href="{{url_for('auth_view.login')}}">Login</a>
+            |
+            <a href="{{url_for('auth_view.register')}}">Register</a>
+        </span>
+    </div>
+      {% endif %}
+    </div>
+  </nav>

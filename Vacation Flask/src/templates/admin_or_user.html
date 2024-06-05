@@ -1,0 +1,31 @@
+
+{% set is_liked = session.get("is_liked") %}
+    {% if user.role_id == 1 %}
+    
+    <span>
+        <div class="like-form">
+            <a class="edit-delete-button" href="{{url_for('vacations_view.update', vacation_id = vacation.vacation_id)}}">Edit</a>
+            <a class="edit-delete-button" onclick="confirmDelete()" href="{{url_for('vacations_view.delete', vacation_id = vacation.vacation_id)}}">Delete</a>    
+        </div>    
+    </span>
+    {% elif user.role_id == 2 %}
+    
+    <form class="like-form" action="{{ url_for('vacations_view.add_like', user_id=user.user_id, vacation_id=vacation.vacation_id) }}" method="POST">
+        <button id="like-{{ vacation.vacation_id }}" class="like-button {% if vacation_like_status[vacation.vacation_id] %}liked{% endif %}" type="submit">
+            <span id="heart-{{ vacation.vacation_id }}" class="heart-icon">&#x2665;</span> Likes: <span id="like-count-{{ vacation.vacation_id }}">{{ likes[vacation.vacation_id-1]['total_likes'] }}</span>
+        </button>
+    </form>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <br><br>
+    {%endif%}
+
+

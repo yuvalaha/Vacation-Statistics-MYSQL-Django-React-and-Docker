@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Beautiful Vacations | Insert Vacation
+{% endblock title %}
+
+{% block main %}
+<form method="post" class="update-form"  enctype="multipart/form-data">
+    <label>Country:</label>
+    <select class="form-control center-select"  name="country_id" id="selected_country_id">
+        <option value="" required>Choose country:</option>
+        {% for country in vacation_countries %}
+            <option value="{{country.country_id}}">{{country.country_name}} </option>
+            {%endfor%}
+    </select>
+    <br>
+    <label>Description: </label>
+    <textarea name="description" id="" cols="30" rows="10"  required></textarea>
+    <br><br>
+    <label>Start on: </label>
+    <input type="date" name="vacation_start_date" id="vacation_start_date" onclick="validateVacationStartDate()" required >
+    <br><br>
+    <label>End on: </label>
+    <input type="date" name="vacation_end_date" onchange="validateVacationsDates()" required>
+    <br><br>
+    <label>Price: </label>
+    <div class="price"></div>
+        <div class="input-container">
+            <input type="number" name="price"  required max="9999" min="0" required>
+        </div>
+    <br>
+    <div class="image-container">
+        <img src="{{url_for('static', filename= 'images/clean_image.jpg')}}" alt="">
+        <label for="vacation_image" class="upload-label">Select image</label>
+        <input type="file" class="form-control-file" id="vacation_image" name="vacation_image" value="" style="display: none;">
+    </div>    
+    <br><br>
+    <button class="btn btn-primary w-80">Add Vacation</button>
+    <br><br>
+    <button class="btn btn-primary w-80">Cancel</button>
+</form>
+
+{% endblock main %}

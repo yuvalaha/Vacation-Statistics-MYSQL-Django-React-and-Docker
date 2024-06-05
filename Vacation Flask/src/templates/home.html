@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Beautiful Vacations | Home
+{% endblock title %}
+
+{% block main %}
+<div class="home">
+    <div class="home-title">
+        <p>Explore New Destinations With Us!</p>
+        <p>Take a trip to your favorite destination and</p>
+        <p>Discover a whole new world</p>
+    </div>
+    <div class="home-cards">
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static', filename ='images/home_images/nature.jpg')}}" class="card-img-top" alt="...">
+            <div class="card-body card-red">
+                <a class="card-text" href="{{url_for('vacations_view.special_locations')}}">Special Locations</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static',filename ='images/home_images/pasta.jpg')}}" class="card-img-top" alt="...">
+            <div class="card-body card-blue">
+                <a class="card-text" href="{{url_for('vacations_view.culinary_vacations')}}">Amazing Food</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static',filename ='images/home_images/summer.jpg')}}" class="card-img-top" alt="...">
+            <div class="card-body card-red">
+                <a class="card-text" href="{{url_for('vacations_view.summer_vacations')}}">Summer Vacations</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static',filename ='images/home_images/winter.jpg')}}" class="card-img-top" alt="...">
+            <div class="card-body card-blue">
+                <a class="card-text" href="{{url_for('vacations_view.winter_vacations')}}">Winter Vacations</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="recommendations">
+        <p>Traveling Recommendations For March: </p>
+        <p>Israel</p>
+    </div>
+    <div>
+        {% include "carousel.html" %}
+    </div>
+    <p class="">March is a fantastic time to visit Israel, as the country emerges from the cooler winter months into the
+        warmth of spring. With the weather becoming pleasantly mild and the landscapes lush with blooming flowers, March
+        offers an ideal setting for exploring Israel's rich history, diverse culture, and stunning natural beauty. In
+        March, visitors can wander through the ancient streets of Jerusalem's Old City, marvel at the iconic sights of
+        Tel Aviv, float in the mineral-rich waters of the Dead Sea, and embark on unforgettable journeys to the sacred
+        sites of Bethlehem, Nazareth, and the Galilee region. Additionally, March in Israel coincides with several
+        significant religious festivals, including Purim, offering travelers a unique opportunity to immerse themselves
+        in the country's vibrant traditions and celebrations.</p>
+</div>
+
+{% endblock main %}

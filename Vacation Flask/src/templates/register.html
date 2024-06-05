@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Beautiful Vacations | Register
+{% endblock title %}
+
+{% block main %}
+
+<div class="login-page">   
+    <h1>Register to Beautiful Vacations</h1>
+    <form method="post" class="login-form">
+        <div class="form-group">
+            <label>First name: </label>
+            <input type="text" name="first_name" value="{{new_user.first_name}}"  required minlength="2" maxlength="30">
+            
+        </div>
+        <div class="form-group">
+            <label>Last name: </label>
+            <input type="text" name="last_name" value="{{new_user.last_name}}"  required minlength="2" maxlength="30">
+        </div>
+        <div class="form-group">
+            <label>Email: </label>
+            <input type="email" name="email" value="{{new_user.email}}"  required minlength="5" maxlength="100">
+        </div>
+        <div class="form-group">
+            <label>Password: </label>
+            <input type="password" name="password" value="{{new_user.password}}"  required minlength="4" maxlength="60">
+        </div>
+        <button>Sign Up</button>
+        
+        <div class="member">
+            <p>Already a member?</p>
+            <a href="{{url_for('auth_view.login')}}">Login</a>
+        </div>
+    </form>
+
+</div>
+
+
+<!-- <form method="post" class="fancy-form">
+
+    <label>First name: </label>
+    <input type="text" name="first_name" value="{{new_user.first_name}}" class="form-control" required minlength="2" maxlength="30">
+
+    <label>Last name: </label>
+    <input type="text" name="last_name" value="{{new_user.last_name}}" class="form-control" required minlength="2" maxlength="30">
+
+    <label>Email: </label>
+    <input type="email" name="email" value="{{new_user.email}}" class="form-control" required minlength="5" maxlength="100">
+
+    <label>Password: </label>
+    <input type="password" name="password" value="{{new_user.password}}" class="form-control" required minlength="4" maxlength="60">
+
+    <button class="btn btn-primary w-100">Register</button>
+    
+</form> -->
+
+{% endblock main %}

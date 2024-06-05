@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Beautiful Vacations | Our Vacations
+{% endblock title %}
+
+{% set user = session.get("user") %}
+
+
+{% block main %}
+<h2 class="home-title">Explore Our Spectacular Vacation Destinations</h2>
+{% if user.role_id == 1 %}
+    <p class="user-edit">Hello {{user.first_name}}</p>
+    <p class="user-edit">Do you want to add vacation?</p>
+    <a class="edit-delete-button" href="{{url_for('vacations_view.insert')}}">Add Vacation</a>
+    <br><br>
+{%endif%}
+
+<div class="vacation-card-container">
+    {% for vacation in vacations %}
+        <div class="card">
+            <img src="{{url_for('vacations_view.get_image', image_name = (vacation.vacation_image  if vacation.vacation_image else '---'))}}" alt="">
+            <div class="card-details">
+                {% include "admin_or_user.html" %}
+                <h1 class="home-title">{{vacation.country_name}}</h1>
+                <br><br>
+                <h5><span>📅 {{vacation.vacation_start_date}} - {{vacation.vacation_end_date}}</span></h5>
+                <br><br>
+                <p>{{ vacation.description[:847] }}...</p>
+                <br><br>
+                <button class="price-button">${{ vacation.price }}</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock main %}
+
+

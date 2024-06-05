@@ -1,0 +1,637 @@
+/* General Styling: */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    text-align: center;
+    background-color:lightgreen;
+
+}
+
+/* Layout Styling */
+.layout {
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 10% 85% 5%;
+}
+
+.layout,
+.layout>* {
+    border: 1px solid;
+}
+
+/* Header and footer section styling */
+header, footer {
+    grid-column: span 6;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+header > *, footer > * {
+    width: 100%;
+}
+
+/* Aside section styling */
+aside {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between;  */
+    align-items: center;
+    padding-top: 60px;
+    gap: 50px;
+    height: 100%; 
+}
+
+aside img.mickey {
+    height: 130px;
+    width: 130px;
+    margin-top: auto; 
+}
+
+
+aside a:nth-child(odd){
+    color: red;
+    
+}
+aside a:nth-child(even){
+    color: blue;
+}
+
+.active {
+
+    font-weight: bold;
+    font-size: x-large;
+    font-family: Arial;
+
+}
+
+/* Main section styling */
+main {
+    grid-column: span 5;    
+    overflow: auto;
+    overflow-x: hidden;
+   
+}
+
+
+/* Registration Styling */
+
+
+
+
+
+.input-container {
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+.beauty-form {
+    width: 25%;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.beauty-form h1 {
+    color: #0f2027;
+    text-align: center;
+}
+
+.input-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+    border-color: #09c372;
+}
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.beauty-form button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: rgb(41, 57, 194);
+    border: none;
+    border-radius: 4px;
+}
+
+/* Error message styling */
+.error {
+    background-color: purple;
+    color: white;
+    font-size: large;
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+}
+
+.member {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.member p {
+    margin-bottom: 5px;
+}
+
+
+
+/* Error message styling */
+.error {
+    background-color: purple;
+    color: white;
+    font-size: large;
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+}
+
+
+img{
+    width: 350px;
+    height: 300px;
+}
+
+
+
+/* Vacation cards styling */
+.user-edit{
+    font-size: xx-large;
+    font-family: 'HomeFont', sans-serif; 
+}
+.user-auth {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    font-size: large;
+}
+
+.vacation-card-container {
+    /* display: flex;
+    flex-wrap: wrap;
+
+    justify-content: flex-start; 
+    margin: 0 -10px;  */
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    margin: 0 -10px;
+}
+
+.card {
+    /* width: calc(33.33% - 20px);
+    margin: 0 10px 20px 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; */
+    width: calc(33.33% - 20px); /* Adjust card width */
+    margin: 0 10px 20px 10px; /* Add spacing between cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    overflow-x: auto;
+    position: relative;
+    /* display: flex; */
+    /* flex-direction: column;  */
+    /* height: 100%; */
+}
+.card-red{
+    background-color: red;
+}
+
+.card-blue{
+    background-color:blue;
+}
+.card-blue > a{
+    color:wheat;
+}
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+.country-name {
+    text-decoration: underline;
+    color: red;
+}
+.card-text{
+    color: #0f2027;
+} 
+.card-details {
+    flex: 1;
+    padding: 20px;
+    background-color: lightskyblue;
+    color: #0f2027;
+    font-weight: bold;
+    /* height: 100%; */
+}
+.card-details p{
+    text-align: justify;
+}
+
+.price-button {
+    /* border-radius: 10px;
+    padding: 5px 10px;
+    background-color: lightcoral;
+    color: #fff;
+    font-size: 20px; */
+    
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: lightcoral;
+    color: #fff;
+    font-size: 20px;
+  
+}
+.like-form {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Buttons styling */
+
+/* Like button */
+.like-button {
+    background-color: gray;
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 100%;
+}
+
+.liked {
+    background-color: pink;
+}
+
+.liked .heart-icon {
+    color: red;
+}
+
+/* Delete, Edit buttons */
+.edit-delete-button {
+    
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Home page styling */
+
+
+.home{
+    
+    font-family: 'HomeFont', sans-serif; 
+    font-size: xx-large;
+}
+
+.home-title{
+    font-size: 60px;
+    font-family: 'HomeFont', sans-serif; 
+    padding: 2%;
+    color: #0f2027;
+}
+
+.home-cards{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+
+/* Font home page */
+@font-face {
+    font-family: 'HomeFont'; 
+    src: url("/static/fonts/waltograph42.ttf"); 
+}
+
+.home h1, h3 {
+    padding: 2%;
+    font-family: 'HomeFont', sans-serif; 
+}
+
+/* Center carousel images */
+
+.carousel-inner{
+    padding: 20px;
+}
+
+.carousel-item img {
+    display: block;
+    margin: 0 auto; 
+}
+
+.carousel-item h5{
+    color: #0f2027;
+    padding-right: 10%;
+    padding-bottom: 20%;
+    font-size: x-large;
+    font-weight: bold;
+
+}
+
+
+
+.recommendations {
+    margin-top: 20px;
+    padding-top: 50px;
+    text-align: left; 
+    text-align: center;
+    justify-content: center;
+}
+.recommendations > p{
+    font-size: 45px;
+
+}
+
+
+
+/* About styling */
+.about-section {
+    padding: 70px;
+}
+
+.about-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: left;
+    
+}
+.about-title {
+    padding: 10px;
+    color: #0f2027;
+    font-size: 70px;
+}
+.about-container p {
+    padding: 10px;
+    color: #0f2027;
+    font-size: x-large;
+}
+
+/* Login styling */
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding: 50px;
+}
+.login-page h1{
+    margin-bottom: 40px;
+}
+.login-form {
+    width: 300px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.login-form p {
+    color: #0f2027;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group  label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input[type="email"],
+input[type="password"], input[type="text"]{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-form  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form  button:hover {
+    background-color: #0056b3;
+}
+
+/* Update styling */
+
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.upload-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    color: black;
+    background-color: blanchedalmond;
+    font-weight: bold;
+}
+
+.upload-label:hover {
+    opacity: 1;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+
+input[type="date"],
+input[type="int"],
+.form-control option{
+    width: 100%;
+    text-align: center;
+}
+
+
+button {
+    width: 50%;
+    margin: 10px auto;
+}
+
+
+.update-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.center-select {
+    -webkit-appearance: auto; 
+    -moz-appearance: auto; 
+    appearance: auto; 
+}
+
+
+/* Update styling */
+.custom-file-input {
+    display: inline-block;
+    width: auto;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-file-input:hover {
+    background-color: #e0e0e0;
+  }
+  
+ 
+  .custom-file-input input[type="file"] {
+    display: none;
+  }
+  
+  .price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container input {
+    padding-left: 20px; 
+    width: 200px; 
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+}
+
+.input-container::before {
+    content: "$";
+    position: absolute;
+    margin-left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+}
+
+
+/* Navbar styling */
+nav span > p {
+    color: antiquewhite;
+    padding-right: 20px;
+}
+nav a{
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar img{
+    width: 45px;
+    height: 45px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+.navbar > p {
+    margin-top: 10px;
+}
+.navbar-brand{
+    font-size: x-large;
+}
+/* Reviews styling */
+.review{
+    font-size: large;
+}
+.review-name{
+    font-size: 45px;
+}
+
