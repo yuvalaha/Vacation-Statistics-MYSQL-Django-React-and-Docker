@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     
 ]
 
-
+CORS_ALLOWED_ORIGINS = ["http://52.32.115.237:3000"]
 
 # SESSION_COOKIE_DOMAIN = None  # Allow sessions for all domains
 # CSRF_COOKIE_DOMAIN = None     # Allow CSRF cookies for all domains

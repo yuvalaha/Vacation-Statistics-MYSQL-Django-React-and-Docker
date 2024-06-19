@@ -33,8 +33,6 @@ def log_in(request):
                 
                 # Set session data to mark user as logged in
                 request.session["is_logged-in"] = True
-                # request.session.save()
-                # return Response(token)
                 return Response({"user": serializer.data, "success": "Login successful, welcome admin."}, status=status.HTTP_200_OK)
             else:
                 json = {"error": "incorrect email or password."}

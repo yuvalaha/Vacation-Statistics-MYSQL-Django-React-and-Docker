@@ -22,7 +22,7 @@ services:
     
     # Environment variables needed by MySQL for creating the database
     environment:
-      MYSQL_HOST: localhost
+      MYSQL_HOST: database-service
       MYSQL_USER: Samoyed
       MYSQL_PASSWORD: BritishShorthair
       MYSQL_DATABASE: beautiful_vacation
@@ -35,7 +35,7 @@ services:
 
     # Health check- Check if database up and running:
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "database-service"]
       timeout: 5s
       interval: 5s
       retries: 24
@@ -132,7 +132,7 @@ services:
     
     # Port mapping:
     ports:
-      - 80:3000
+      - 3000:3000
 
 volumes:
   images-volume:
